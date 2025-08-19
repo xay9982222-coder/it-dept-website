@@ -1,0 +1,30 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "pages"
+    label: "จัดการเนื้อหาเว็บไซต์"
+    files:
+      - label: "บทความและวิดีโอ"
+        name: "content"
+        file: "_data/content.json"
+        fields:
+          - label: "รายการบทความแนะนำ"
+            name: "articles"
+            widget: "list"
+            fields:
+              - { label: "ID (ตั้งชื่อภาษาอังกฤษสั้นๆ ไม่ซ้ำกัน)", name: "id", widget: "string" }
+              - { label: "วันที่", name: "date", widget: "string" }
+              - { label: "หัวข้อ", name: "title", widget: "string" }
+              - { label: "คำอธิบายสั้นๆ", name: "description", widget: "string" }
+              - { label: "เนื้อหาเต็ม (ใช้ # สำหรับหัวข้อใหญ่)", name: "content", widget: "markdown" }
+          - label: "รายการวิดีโอสอน"
+            name: "videos"
+            widget: "list"
+            fields:
+              - { label: "หัวข้อวิดีโอ", name: "title", widget: "string" }
+              - { label: "YouTube Video ID", name: "youtubeId", widget: "string" }

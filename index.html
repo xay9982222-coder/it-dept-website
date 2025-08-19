@@ -260,249 +260,197 @@
         </div>
     </div>
 
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             
-            // =================================================================
-            // ===== CMS DATABASE (Content Management System) =====
-            // =================================================================
-            // ໃນອະນາຄົດ, ເມື່ອທ່ານຕ້ອງການເພີ່ມບົດຄວາມ ຫຼື ວິດີໂອໃໝ່
-            // ພຽງແຕ່ກັອບປີ້-ວາງຂໍ້ມູນໃໝ່ຕໍ່ທ້າຍລາຍການຂ້າງລຸ່ມນີ້
-            // ໂດຍໃຫ້ຢູ່ໃນຮູບແບບດຽວກັນ.
-            
-            const cmsData = {
-                articles: [
-                    {
-                        id: 'phishing',
-                        date: '15 ສິງຫາ 2025',
-                        title: '5 ວິທີປ້ອງກັນອີເມວຫຼອກລວງ (Phishing)',
-                        description: 'ຮຽນຮູ້ວິທີສັງເກດ ແລະ ປ້ອງກັນຕົນເອງຈາກອີເມວຫຼອກລວງທີ່ກຳລັງລະບາດ...',
-                        content: `
-                            <p class="mb-4">ອີເມວຫຼອກລວງ ຫຼື Phishing ເປັນໄພຄຸກຄາມທີ່ພົບເຫັນໄດ້ທົ່ວໄປ. ຜູ້ບໍ່ຫວັງດີຈະພະຍາຍາມຫຼອກໃຫ້ທ່ານກົດລິ້ງ ຫຼື ໃຫ້ຂໍ້ມູນສ່ວນຕົວ. ລອງນຳໃຊ້ 5 ວິທີນີ້ເພື່ອປ້ອງກັນຕົນເອງ:</p>
-                            <ol class="list-decimal list-inside space-y-2">
-                                <li><b>ກວດສອບອີເມວຜູ້ສົ່ງ:</b> ເບິ່ງວ່າອີເມວຜູ້ສົ່ງນັ້ນຖືກຕ້ອງ ແລະ ເປັນທີ່ໜ້າເຊື່ອຖືຫຼືບໍ່. ຖ້າເບິ່ງແປກໆ, ຢ່າໄວ້ໃຈ.</li>
-                                <li><b>ຢ່າຄລິກລິ້ງທີ່ໜ້າສົງໄສ:</b> ໃຫ້ນຳເມົ້າໄປວາງເທິງລິ້ງກ່ອນ (ໂດຍບໍ່ຕ້ອງຄລິກ) ເພື່ອເບິ່ງວ່າ URL ປາຍທາງນັ້ນຖືກຕ້ອງຫຼືບໍ່.</li>
-                                <li><b>ສັງເກດການໃຊ້ພາສາ:</b> ອີເມວຫຼອກລວງມັກຈະມີຄຳຜິດ ຫຼື ໃຊ້ພາສາທີ່ຟ້າວຟັ່ງ, ກົດດັນໃຫ້ທ່ານເຮັດບາງຢ່າງທັນທີ.</li>
-                                <li><b>ຢ່າເປີດໄຟລ໌ແນບທີ່ບໍ່ໄດ້ຮ້ອງຂໍ:</b> ໄຟລ໌ແນບອາດມີໄວຣັສແຝງຢູ່.</li>
-                                <li><b>ໃຊ້ການຢືນຢັນຕົວຕົນສອງຂັ້ນຕອນ (2FA):</b> ເປັນການເພີ່ມຊັ້ນຄວາມປອດໄພໃຫ້ບັນຊີຂອງທ່ານ.</li>
-                            </ol>
-                        `
-                    },
-                    {
-                        id: 'teams',
-                        date: '10 ສິງຫາ 2025',
-                        title: 'ຄູ່ມື: ການນຳໃຊ້ Microsoft Teams ໃຫ້ມີປະສິດທິພາບ',
-                        description: 'ຮຽນຮູ້ການໃຊ້ງານເຄື່ອງມືຕ່າງໆໃນ Microsoft Teams ເພື່ອການປະຊຸມ ແລະ ເຮັດວຽກຮ່ວມກັນ...',
-                        content: `
-                            <p class="mb-4">Microsoft Teams ເປັນເຄື່ອງມືທີ່ມີປະສິດທິພາບສຳລັບການເຮັດວຽກຮ່ວມກັນ. ລອງໃຊ້ເຄັດລັບເຫຼົ່ານີ້ເພື່ອເຮັດວຽກໄດ້ດີຂຶ້ນ:</p>
-                            <ul class="list-disc list-inside space-y-2">
-                                <li><b>ສ້າງທີມ ແລະ ຊ່ອງທາງ (Channels):</b> ຈັດລະບຽບການສົນທະນາຕາມໂຄງການ ຫຼື ພະແນກງານ.</li>
-                                <li><b>ໃຊ້ @mentions:</b> ເພື່ອເອີ້ນຄວາມສົນໃຈຈາກບຸກຄົນທີ່ຕ້ອງການໃຫ້ເຫັນຂໍ້ຄວາມ.</li>
-                                <li><b>ຈັດການປະຊຸມອອນລາຍ:</b> ໃຊ້ຟັງຊັນການປະຊຸມ, ບັນທຶກການປະຊຸມ, ແລະ ແບ່ງປັນໜ້າຈໍເພື່ອການສື່ສານທີ່ຊັດເຈນ.</li>
-                                <li><b>ແບ່ງປັນ ແລະ ຮ່ວມກັນແກ້ໄຂໄຟລ໌:</b> ສາມາດເຮັດວຽກເທິງເອກະສານ Word, Excel, PowerPoint ຮ່ວມກັນໄດ້ແບບສົດໆ.</li>
-                                <li><b>ເຊື່ອມຕໍ່ກັບແອັບພລິເຄຊັນອື່ນ:</b> ເພີ່ມເຄື່ອງມືອື່ນໆ ເຊັ່ນ Planner, OneNote ເຂົ້າມາໃນທີມຂອງທ່ານເພື່ອການເຮັດວຽກທີ່ຄົບວົງຈອນ.</li>
-                            </ul>
-                        `
-                    },
-                    {
-                        id: 'speedup',
-                        date: '05 ສິງຫາ 2025',
-                        title: 'ເຄັດລັບ: ວິທີເລັ່ງຄວາມໄວຄອມພິວເຕີດ້ວຍຕົນເອງ',
-                        description: 'ຄອມພິວເຕີຊ້າບໍ່ແມ່ນເລື່ອງຕະຫຼົກ! ລອງເຮັດຕາມ 7 ເຄັດລັບງ່າຍໆນີ້...',
-                        content: `
-                            <p class="mb-4">ຄອມພິວເຕີທີ່ຊ້າລົງອາດເກີດຈາກຫຼາຍສາເຫດ. ລອງກວດສອບ ແລະ ແກ້ໄຂດ້ວຍວິທີງ່າຍໆເຫຼົ່ານີ້:</p>
-                            <ol class="list-decimal list-inside space-y-2">
-                                <li><b>ລຶບໂປຣແກຣມທີ່ບໍ່ໄດ້ໃຊ້:</b> ເຂົ້າໄປທີ່ Control Panel > Programs and Features ເພື່ອຖອນການຕິດຕັ້ງໂປຣແກຣມທີ່ບໍ່ຈຳເປັນ.</li>
-                                <li><b>ລຶບໄຟລ໌ຂີ້ເຫຍື້ອ (Temporary Files):</b> ໃຊ້ເຄື່ອງມື Disk Cleanup ເພື່ອລ້າງໄຟລ໌ຂີ້ເຫຍື້ອໃນລະບົບ.</li>
-                                <li><b>ປິດໂປຣແກຣມທີ່ເລີ່ມພ້ອມ Windows:</b> ກົດ Ctrl+Shift+Esc ເພື່ອເປີດ Task Manager, ໄປທີ່ແຖບ Startup ແລະ ປິດໂປຣແກຣມທີ່ບໍ່ຈຳເປັນ.</li>
-                                <li><b>ສະແກນຫາໄວຣັສ:</b> ໃຊ້ໂປຣແກຣມ Antivirus ເພື່ອກວດສອບ ແລະ ກຳຈັດມັນແວ.</li>
-                                <li><b>ອັບເດດ Windows ແລະ Drivers:</b> ການອັບເດດຈະຊ່ວຍແກ້ໄຂຂໍ້ຜິດພາດ ແລະ ເພີ່ມປະສິດທິພາບ.</li>
-                                <li><b>ເພີ່ມ RAM:</b> ຖ້າຄອມຂອງທ່ານເກົ່າແລ້ວ, ການເພີ່ມ RAM ເປັນວິທີທີ່ເຫັນຜົນທີ່ສຸດ.</li>
-                                <li><b>ປ່ຽນໄປໃຊ້ SSD:</b> Solid State Drive (SSD) ເຮັດວຽກໄວກວ່າ Hard Disk Drive (HDD) ແບບດັ້ງເດີມຫຼາຍເທົ່າ.</li>
-                            </ol>
-                        `
-                    }
-                ],
-                videos: [
-                    {
-                        youtubeId: 'Cdf6zJwYpas',
-                        title: 'ການທຳນາຍ AI ປີ 2035 ຈາກນັກຄິດຄົ້ນລະດັບໂລກ'
-                    },
-                    {
-                        youtubeId: 'GSBvRno8ZcA',
-                        title: 'ປີ 2025 ມະນຸດຢູ່ໃສ? ເມື່ອ AI ຄອງໂລກ'
-                    },
-                    {
-                        youtubeId: '0EXpypxTkNI',
-                        title: 'ການກຳນົດການຍໍ້ໜ້າ, ໄລຍະກັ້ນຊ້າຍ ແລະ ໄລຍະກັ້ນຂວາ ໂດຍໃຊ້ Indent ເທິງແຖບໄມ້ບັນທັດ'
-                    }
-                ]
-            };
-
-            // =================================================================
-            // ===== DYNAMIC CONTENT RENDERING =====
-            // =================================================================
             const articlesContainer = document.getElementById('articles-container');
             const videosContainer = document.getElementById('videos-container');
             const articleViewContainer = document.getElementById('article-view');
-
-            // Render Article Cards
-            cmsData.articles.forEach(article => {
-                const cardHtml = `
-                    <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden">
-                        <div class="p-6">
-                            <p class="text-sm text-gray-500 mb-2">${article.date}</p>
-                            <h3 class="text-lg font-bold text-gray-800 mb-2">${article.title}</h3>
-                            <p class="text-gray-600 mb-4 text-sm">${article.description}</p>
-                            <a href="#article-${article.id}" class="open-article-btn text-blue-600 font-semibold hover:underline text-sm">ອ່ານເພີ່ມເຕີມ →</a>
-                        </div>
-                    </div>
-                `;
-                articlesContainer.innerHTML += cardHtml;
-            });
-
-            // Render Video Cards
-            cmsData.videos.forEach(video => {
-                const cardHtml = `
-                    <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden cursor-pointer open-video-btn" data-youtube-id="${video.youtubeId}">
-                        <img src="https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg" alt="ຮູບໜ້າປົກວິດີໂອ" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-lg font-bold text-gray-800">${video.title}</h3>
-                        </div>
-                    </div>
-                `;
-                videosContainer.innerHTML += cardHtml;
-            });
-            
-            // Render Full Article Pages
-            cmsData.articles.forEach(article => {
-                const articleHtml = `
-                    <section id="article-${article.id}" class="article-content py-20 bg-white">
-                        <div class="container mx-auto px-6 max-w-3xl">
-                            <a href="#knowledge" class="back-to-main-btn text-blue-600 font-semibold hover:underline text-sm mb-8 inline-block">← ກັບຄືນໄປຄັງຄວາມຮູ້</a>
-                            <h2 class="text-4xl font-bold text-gray-800 mb-4">${article.title}</h2>
-                            <p class="text-gray-500 mb-8">${article.date}</p>
-                            <div class="prose max-w-none text-gray-700">${article.content}</div>
-                        </div>
-                    </section>
-                `;
-                articleViewContainer.innerHTML += articleHtml;
-            });
-
-            // =================================================================
-            // ===== EVENT LISTENERS AND PAGE LOGIC =====
-            // =================================================================
             const mainContent = document.getElementById('main-content');
             const articleView = document.getElementById('article-view');
-            const allArticleContents = document.querySelectorAll('.article-content');
-            
-            function showMainContent() {
-                mainContent.style.display = 'block';
-                articleView.style.display = 'none';
-            }
 
-            function showArticle(articleId) {
-                mainContent.style.display = 'none';
-                articleView.style.display = 'block';
-                allArticleContents.forEach(content => {
-                    content.style.display = 'none';
-                });
-                const targetArticle = document.getElementById(articleId);
-                if (targetArticle) {
-                    targetArticle.style.display = 'block';
-                }
-                window.scrollTo(0, 0);
-            }
-
-            // Must re-select buttons after they are dynamically created
-            document.querySelectorAll('.open-article-btn').forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const articleId = this.getAttribute('href').substring(1);
-                    showArticle(articleId);
-                });
-            });
-
-            document.querySelectorAll('.back-to-main-btn, .main-nav-link').forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showMainContent();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        setTimeout(() => {
-                            targetElement.scrollIntoView({ behavior: 'smooth' });
-                        }, 0);
+            // --- DATA FETCHING FROM CMS ---
+            async function loadCmsData() {
+                try {
+                    // Add a cache-busting parameter to the fetch URL
+                    const response = await fetch(`/_data/content.json?v=${new Date().getTime()}`);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
+                    const data = await response.json();
+                    renderContent(data);
+                } catch (error) {
+                    console.error("Could not load CMS data:", error);
+                    articlesContainer.innerHTML = "<p>ຍັງບໍ່ມີບົດຄວາມເທື່ອ... ກະລຸນາເພີ່ມບົດຄວາມໃນหน้า Admin.</p>";
+                    videosContainer.innerHTML = "<p>ຍັງບໍ່ມີວິດີໂອເທື່ອ... ກະລຸນາເພີ່ມວິດີໂອໃນหน้า Admin.</p>";
+                }
+            }
+
+            // --- DYNAMIC CONTENT RENDERING ---
+            function renderContent(cmsData) {
+                articlesContainer.innerHTML = '';
+                videosContainer.innerHTML = '';
+                articleViewContainer.innerHTML = '';
+
+                // Render Article Cards, only if articles exist
+                if (cmsData.articles && cmsData.articles.length > 0) {
+                    cmsData.articles.forEach(article => {
+                        const cardHtml = `
+                            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden">
+                                <div class="p-6">
+                                    <p class="text-sm text-gray-500 mb-2">${article.date || ''}</p>
+                                    <h3 class="text-lg font-bold text-gray-800 mb-2">${article.title || ''}</h3>
+                                    <p class="text-gray-600 mb-4 text-sm">${article.description || ''}</p>
+                                    <a href="#article-${article.id}" data-article-id="${article.id}" class="open-article-btn text-blue-600 font-semibold hover:underline text-sm">ອ່ານເພີ່ມເຕີມ →</a>
+                                </div>
+                            </div>
+                        `;
+                        articlesContainer.innerHTML += cardHtml;
+                    });
+                } else {
+                     articlesContainer.innerHTML = "<p>ຍັງບໍ່ມີບົດຄວາມເທື່ອ...</p>";
+                }
+
+
+                // Render Video Cards, only if videos exist
+                if (cmsData.videos && cmsData.videos.length > 0) {
+                    cmsData.videos.forEach(video => {
+                        const cardHtml = `
+                            <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden cursor-pointer open-video-btn" data-youtube-id="${video.youtubeId}">
+                                <img src="https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg" alt="ຮູບໜ້າປົກວິດີໂອ" class="w-full h-48 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-lg font-bold text-gray-800">${video.title || ''}</h3>
+                                </div>
+                            </div>
+                        `;
+                        videosContainer.innerHTML += cardHtml;
+                    });
+                } else {
+                    videosContainer.innerHTML = "<p>ຍັງບໍ່ມີວິດີໂອເທື່ອ...</p>";
+                }
+
+                // Render Full Article Pages
+                if (cmsData.articles && cmsData.articles.length > 0) {
+                    cmsData.articles.forEach(article => {
+                        const formattedContent = (article.content || '').replace(/\n/g, '<br>');
+
+                        const articleHtml = `
+                            <section id="article-${article.id}" class="article-content py-20 bg-white">
+                                <div class="container mx-auto px-6 max-w-3xl">
+                                    <a href="#knowledge" class="back-to-main-btn text-blue-600 font-semibold hover:underline text-sm mb-8 inline-block">← ກັບຄືນໄປຄັງຄວາມຮູ້</a>
+                                    <h2 class="text-4xl font-bold text-gray-800 mb-4">${article.title || ''}</h2>
+                                    <p class="text-gray-500 mb-8">${article.date || ''}</p>
+                                    <div class="prose max-w-none text-gray-700">${formattedContent}</div>
+                                </div>
+                            </section>
+                        `;
+                        articleViewContainer.innerHTML += articleHtml;
+                    });
+                }
+
+                setupEventListeners();
+            }
+
+            // --- EVENT LISTENERS AND PAGE LOGIC ---
+            function setupEventListeners() {
+                function showMainContent() {
+                    mainContent.style.display = 'block';
+                    articleView.style.display = 'none';
+                }
+
+                function showArticle(articleId) {
+                    mainContent.style.display = 'none';
+                    articleView.style.display = 'block';
+                    document.querySelectorAll('.article-content').forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    const targetArticle = document.getElementById(`article-${articleId}`);
+                    if (targetArticle) {
+                        targetArticle.style.display = 'block';
+                    }
+                    window.scrollTo(0, 0);
+                }
+
+                document.querySelectorAll('.open-article-btn').forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const articleId = this.dataset.articleId;
+                        showArticle(articleId);
+                    });
                 });
-            });
 
-            // --- Mobile Menu Toggle ---
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-            const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
-            mobileNavLinks.forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); });
-
-            // --- Active Link Highlighting on Scroll ---
-            const sections = document.querySelectorAll('#main-content > section');
-            const navLinks = document.querySelectorAll('#desktop-nav a.nav-link');
-            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href').substring(1) === entry.target.id) {
-                                link.classList.add('active');
+                document.querySelectorAll('.main-nav-link, .back-to-main-btn').forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        const href = this.getAttribute('href');
+                        if (href && href.startsWith('#')) {
+                            e.preventDefault();
+                            showMainContent();
+                            const targetElement = document.querySelector(href);
+                            if (targetElement) {
+                                setTimeout(() => {
+                                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                                }, 0);
                             }
-                        });
+                        }
+                    });
+                });
+
+                const mobileMenuButton = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+                mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+                document.querySelectorAll('#mobile-menu a').forEach(link => { 
+                    link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); 
+                });
+
+                const sections = document.querySelectorAll('#main-content > section');
+                const navLinks = document.querySelectorAll('#desktop-nav a.nav-link');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            navLinks.forEach(link => {
+                                link.classList.remove('active');
+                                if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                    link.classList.add('active');
+                                }
+                            });
+                        }
+                    });
+                }, { root: null, rootMargin: '0px', threshold: 0.5 });
+                sections.forEach(section => { observer.observe(section); });
+
+                const videoModal = document.getElementById('video-modal');
+                const closeVideoModalBtn = document.getElementById('close-video-modal-btn');
+                const youtubePlayer = document.getElementById('youtube-player');
+
+                function openVideoModal(youtubeId) {
+                    youtubePlayer.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
+                    videoModal.classList.remove('hidden', 'opacity-0');
+                    videoModal.querySelector('.modal-content').classList.remove('scale-95');
+                }
+
+                function closeVideoModal() {
+                    youtubePlayer.src = '';
+                    videoModal.classList.add('opacity-0');
+                    videoModal.querySelector('.modal-content').classList.add('scale-95');
+                    setTimeout(() => videoModal.classList.add('hidden'), 300);
+                }
+
+                document.querySelectorAll('.open-video-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        openVideoModal(btn.dataset.youtubeId);
+                    });
+                });
+
+                closeVideoModalBtn.addEventListener('click', closeVideoModal);
+                videoModal.addEventListener('click', (e) => {
+                    if (e.target === videoModal) {
+                        closeVideoModal();
                     }
                 });
-            }, observerOptions);
-            sections.forEach(section => { observer.observe(section); });
-
-            // --- Video Modal Logic ---
-            const videoModal = document.getElementById('video-modal');
-            const videoModalBackdrop = videoModal;
-            const videoModalContent = videoModal.querySelector('.modal-content');
-            const closeVideoModalBtn = document.getElementById('close-video-modal-btn');
-            const youtubePlayer = document.getElementById('youtube-player');
-
-            function openVideoModal(youtubeId) {
-                youtubePlayer.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
-                videoModal.classList.remove('hidden');
-                setTimeout(() => {
-                    videoModalBackdrop.classList.remove('opacity-0');
-                    videoModalContent.classList.remove('scale-95');
-                }, 10);
             }
 
-            function closeVideoModal() {
-                youtubePlayer.src = ''; // Stop the video
-                videoModalBackdrop.classList.add('opacity-0');
-                videoModalContent.classList.add('scale-95');
-                setTimeout(() => {
-                    videoModal.classList.add('hidden');
-                }, 300);
-            }
-
-            // Must re-select buttons after they are dynamically created
-            document.querySelectorAll('.open-video-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const youtubeId = btn.dataset.youtubeId;
-                    openVideoModal(youtubeId);
-                });
-            });
-
-            closeVideoModalBtn.addEventListener('click', closeVideoModal);
-            videoModalBackdrop.addEventListener('click', (e) => {
-                // If clicked directly on the backdrop (not the content), close modal
-                if (e.target === videoModalBackdrop) {
-                    closeVideoModal();
-                }
-            });
+            // --- INITIAL LOAD ---
+            loadCmsData();
         });
     </script>
 </body>
