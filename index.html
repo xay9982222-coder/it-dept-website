@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ພະແນກເຕັກໂນໂລຊີຂໍ້ມູນຂ່າວສານ (ພຕສ) - ການບໍລິການ ICT ແລະ IT Support</title>
+    <meta name="description" content="ເວັບໄຊຢ່າງເປັນທາງການຂອງພະແນກເຕັກໂນໂລຊີຂໍ້ມູນຂ່າວສານ, ລວມຂໍ້ມູນ IT, ການບໍລິການດ້ານເຕັກນິກ, ຄວາມປອດໄພທາງໄຊເບີ ແລະ ຄັງຄວາມຮູ້ ICT.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Noto Sans Lao', sans-serif; }
+        .text-shadow { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); }
+        
+        html { 
+            scroll-padding-top: 80px; /* Adjust this value to match your header's height */
+            scroll-behavior: smooth;
+        }
+
+        .nav-link { position: relative; padding-bottom: 4px; }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 2px; background-color: #2563eb;
+            transition: width 0.3s ease-in-out;
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        
+        .article-content {
+            display: none;
+        }
+        .modal-backdrop {
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="main-nav-link flex items-center space-x-2">
+                    <svg class="w-8 h-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c.251.023.501.05.75.082m.75.082a24.301 24.301 0 014.5 0m4.5 0a24.301 24.301 0 014.5 0m-16.5 0a24.301 24.301 0 014.5 0m-4.5 0a24.295 24.295 0 00-1.558 2.052c-.328.464-.622.956-.865 1.481m-1.481.865a24.295 24.295 0 00-2.052 1.558m18.334-3.61a24.295 24.295 0 00-2.052-1.558m-1.558-2.052c-.464-.328-.956-.622-1.481-.865M12 14.25a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z" />
+                    </svg>
+                    <span class="text-xl font-bold text-gray-800">ພຕສ - ກົມໃຫຍ່ເຕັກນິກ</span>
+                </a>
+                
+                <div class="hidden md:flex items-center space-x-8" id="desktop-nav">
+                    <a href="#home" class="main-nav-link nav-link text-gray-600 hover:text-blue-600 font-medium active">ໜ້າຫຼັກ</a>
+                    <a href="#about" class="main-nav-link nav-link text-gray-600 hover:text-blue-600 font-medium">ກ່ຽວກັບ ພຕສ</a>
+                    <a href="#services" class="main-nav-link nav-link text-gray-600 hover:text-blue-600 font-medium">ການບໍລິການ</a>
+                    <a href="#knowledge" class="main-nav-link nav-link text-gray-600 hover:text-blue-600 font-medium">ຄັງຄວາມຮູ້</a>
+                    <a href="#contact" class="main-nav-link bg-blue-600 text-white py-2 px-5 rounded-md hover:bg-blue-700 transition duration-300 transform hover:scale-105">ແຈ້ງບັນຫາ</a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="mobile-menu" class="md:hidden hidden mt-4">
+                <a href="#home" class="main-nav-link block py-2 px-4 text-sm text-gray-600 hover:bg-gray-200 rounded">ໜ້າຫຼັກ</a>
+                <a href="#about" class="main-nav-link block py-2 px-4 text-sm text-gray-600 hover:bg-gray-200 rounded">ກ່ຽວກັບ ພຕສ</a>
+                <a href="#services" class="main-nav-link block py-2 px-4 text-sm text-gray-600 hover:bg-gray-200 rounded">ການບໍລິການ</a>
+                <a href="#knowledge" class="main-nav-link block py-2 px-4 text-sm text-gray-600 hover:bg-gray-200 rounded">ຄັງຄວາມຮູ້</a>
+                <a href="#contact" class="main-nav-link block mt-2 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 text-center">ແຈ້ງບັນຫາ</a>
+            </div>
+        </nav>
+    </header>
+
+    <div id="main-content">
+        <section id="home">
+            <div class="relative bg-cover bg-center h-[calc(100vh-80px)] text-white" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop');">
+                <div class="absolute inset-0 bg-black opacity-60"></div>
+                <div class="container mx-auto px-6 h-full flex flex-col justify-center items-center text-center relative z-10">
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 text-shadow">ພະແນກເຕັກໂນໂລຊີຂໍ້ມູນຂ່າວສານ (ພຕສ)</h1>
+                    <p class="text-lg md:text-xl mb-8 max-w-3xl text-shadow">ສູນກາງໃຫ້ບໍລິການ ແລະ ສະໜັບສະໜູນດ້ານໄອທີ ເພື່ອຂັບເຄື່ອນການຫັນເປັນດິຈິຕອນຂອງກົມໃຫຍ່ເຕັກນິກ.</p>
+                    <a href="#contact" class="bg-red-600 text-white py-3 px-8 rounded-full text-lg font-semibold hover:bg-red-700 transition duration-300 transform hover:scale-105 shadow-lg">ແຈ້ງບັນຫາ / ຂໍຄວາມຊ່ວຍເຫຼືອ</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800">ກ່ຽວກັບ ພະແນກ ພຕສ</h2>
+                    <p class="text-gray-600 mt-4">ພາລະກິດຂອງພວກເຮົາຄືການວາງຮາກຖານດ້ານເຕັກໂນໂລຊີ ເພື່ອຂັບເຄື່ອນວິໄສທັດຂອງອົງກອນ</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">ພາລະບົດບາດຫຼັກ</h3>
+                        <p class="text-gray-700 mb-6">ພະແນກເຕັກໂນໂລຊີຂໍ້ມູນຂ່າວສານ (ພຕສ) ຖືກສ້າງຕັ້ງຂຶ້ນເພື່ອເປັນເສນາທິການໃຫ້ແກ່ຄະນະນຳ ແລະ ຂັບເຄື່ອນການຫັນເປັນດິຈິຕອນຂອງກົມໃຫຍ່. ປ່ຽນຈາກການ "ແລ່ນຕາມແກ້ບັນຫາ" ໄປສູ່ການ "ວາງແຜນປ້ອງກັນລ່ວງໜ້າ", ເພີ່ມສະມັດຖະພາບ ແລະ ສ້າງລະບົບປ້ອງກັນຂໍ້ມູນທີ່ເຂັ້ມແຂງ.</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">ໂຄງປະກອບການຈັດຕັ້ງ</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li><b>ຂັ້ນພະແນກ:</b> ຫົວໜ້າພະແນກ 1 ສະຫາຍ, ຮອງຫົວໜ້າພະແນກ 1 ສະຫາຍ.</li>
+                            <li><b>ຂັ້ນໜ່ວຍງານ:</b>
+                                <ul class="list-disc list-inside ml-6">
+                                    <li>ໜ່ວຍງານສະໜັບສະໜູນດ້ານເຕັກນິກ</li>
+                                    <li>ໜ່ວຍງານບໍລິຫານລະບົບ-ເຄືອຂ່າຍ</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" class="rounded-lg shadow-2xl" alt="ຮູບພາບທີມງານໄອທີ">
+                    </div>
+                </div>
+                <div class="mt-20">
+                    <h3 class="text-3xl font-bold text-gray-800 text-center mb-12">ທີມງານຂອງພວກເຮົາ</h3>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
+                        <div class="text-center">
+                            <div class="w-32 h-32 mx-auto bg-gray-200 rounded-full mb-4 flex items-center justify-center"><span class="text-gray-500">ຮູບ</span></div>
+                            <h4 class="text-xl font-bold text-gray-800">ສະຫາຍ ... (ຊື່)</h4>
+                            <p class="text-gray-600">ຫົວໜ້າພະແນກ</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-32 h-32 mx-auto bg-gray-200 rounded-full mb-4 flex items-center justify-center"><span class="text-gray-500">ຮູບ</span></div>
+                            <h4 class="text-xl font-bold text-gray-800">ສະຫາຍ ... (ຊື່)</h4>
+                            <p class="text-gray-600">ຮອງຫົວໜ້າພະແນກ</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-32 h-32 mx-auto bg-gray-200 rounded-full mb-4 flex items-center justify-center"><span class="text-gray-500">ຮູບ</span></div>
+                            <h4 class="text-xl font-bold text-gray-800">ສະຫາຍ ... (ຊື່)</h4>
+                            <p class="text-gray-600">ວິຊາການ ບໍລິຫານລະບົບ</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-32 h-32 mx-auto bg-gray-200 rounded-full mb-4 flex items-center justify-center"><span class="text-gray-500">ຮູບ</span></div>
+                            <h4 class="text-xl font-bold text-gray-800">ສະຫາຍ ... (ຊື່)</h4>
+                            <p class="text-gray-600">ວິຊາການ ຊ່ວຍວຽກ</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-32 h-32 mx-auto bg-gray-200 rounded-full mb-4 flex items-center justify-center"><span class="text-gray-500">ຮູບ</span></div>
+                            <h4 class="text-xl font-bold text-gray-800">ສະຫາຍ ... (ຊື່)</h4>
+                            <p class="text-gray-600">ວິຊາການ ຊ່ວຍວຽກ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800">ການບໍລິການຂອງພວກເຮົາ</h2>
+                    <p class="text-gray-600 mt-4">ພວກເຮົາໃຫ້ບໍລິການທີ່ຄອບຄຸມ ເພື່ອສະໜັບສະໜູນການເຮັດວຽກຂອງທ່ານ</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">ການສະໜັບສະໜູນດ້ານເຕັກນິກ</h3>
+                        <p class="text-gray-600">ບໍລິການແກ້ໄຂບັນຫາຄອມພິວເຕີ, ຕິດຕັ້ງໂປຣແກຣມ, ແກ້ໄຂບັນຫາອຸປະກອນຕໍ່ພ່ວງ (Printer, Scanner) ແລະ ໃຫ້ຄຳປຶກສາການໃຊ້ງານເບື້ອງຕົ້ນ.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">ການບໍລິຫານລະບົບ-ເຄືອຂ່າຍ</h3>
+                        <p class="text-gray-600">ຕິດຕາມ, ກວດສອບ ແລະ ບຳລຸງຮັກສາລະບົບ Server, ລະບົບເຄືອຂ່າຍ (Network) ແລະ ອິນເຕີເນັດຂອງອົງກອນໃຫ້ສາມາດໃຊ້ງານໄດ້ຕະຫຼອດເວລາ.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">ຄວາມປອດໄພທາງໄຊເບີ</h3>
+                        <p class="text-gray-600">ວາງລະບົບປ້ອງກັນໄວຣັສ, ປ້ອງກັນການບุกรุก, ສຳຮອງຂໍ້ມູນທີ່ສຳຄັນ ແລະ ຈັດຝຶກອົບຮົມດ້ານຄວາມປອດໄພໃຫ້ພະນັກງານ.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">ການຈັດການຊັບສິນໄອທີ</h3>
+                        <p class="text-gray-600">ສຳຫຼວດ, ຂຶ້ນບັນຊີ ແລະ ປະເມີນສະພາບຊັບສິນໄອທີທັງໝົດຂອງກົມໃຫຍ່ ເພື່ອວາງແຜນການຈັດຊື້ ແລະ ບຳລຸງຮັກສາ.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">ການພັດທະນາ ແລະ ທີ່ປຶກສາ</h3>
+                        <p class="text-gray-600">ຄົ້ນຄວ້າ ແລະ ສະເໜີໂຄງການເຕັກໂນໂລຊີໃໝ່ໆ ເພື່ອເປັນເສນາທິການໃຫ້ແກ່ຄະນະນຳໃນການວາງແຜນຍຸດທະສາດດ້ານດິຈິຕອນ.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">ການຈັດຝຶກອົບຮົມ</h3>
+                        <p class="text-gray-600">ຈັດຝຶກອົບຮົມການນຳໃຊ້ໂປຣແກຣມພື້ນຖານ ແລະ ການຮັບມືກັບໄພຄຸກຄາມທາງໄຊເບີໃຫ້ແກ່ພະນັກງານພາຍໃນອົງກອນ.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="knowledge" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800">ຄັງຄວາມຮູ້ ແລະ ເຄັດລັບໄອທີ</h2>
+                    <p class="text-gray-600 mt-4">ແຫຼ່ງລວມບົດຄວາມ, ຄູ່ມື ແລະ ເຄັດລັບດີໆ ເພື່ອເພີ່ມທັກສະດ້ານດິຈິຕອນຂອງທ່ານ</p>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-gray-800 mb-8">ບົດຄວາມແນະນຳ</h3>
+                <div id="articles-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    </div>
+
+                <h3 class="text-2xl font-bold text-gray-800 mt-20 mb-8">ວິດີໂອສອນ</h3>
+                <div id="videos-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800">ແຈ້ງບັນຫາ ຫຼື ຕິດຕໍ່ພວກເຮົາ</h2>
+                    <p class="text-gray-600 mt-4">ກະລຸນາເລືອກຊ່ອງທາງທີ່ທ່ານສະດວກທີ່ສຸດ</p>
+                </div>
+                <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 bg-white p-8 rounded-lg shadow-2xl">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">ຊ່ອງທາງຕິດຕໍ່</h3>
+                        <div class="space-y-4 text-gray-700">
+                            <p><b>ທີ່ຕັ້ງຫ້ອງການ:</b> ຕຶກກົມໃຫຍ່ເຕັກນິກ, ຊັ້ນ 3, ຫ້ອງການກົມໃຫຍ່ເຕັກນິກ, ນະຄອນຫຼວງວຽງຈັນ</p>
+                            <p><b>ເບີໂທ (ດ່ວນ):</b> 030 9736469</p>
+                            <p><b>ອີເມວ:</b> xay6195t@gmail.com</p>
+                            <p><b>ເວລາເຮັດວຽກ:</b> ວັນຈັນ - ວັນສຸກ, 8:00 - 16:00</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">ແບບຟອມແຈ້ງບັນຫາ</h3>
+                        
+                        <form action="https://formspree.io/f/mgvzjeeo" method="POST">
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 mb-1">ຊື່ ແລະ ນາມສະກຸນ</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="ກະລຸນາປ້ອນຊື່ຂອງທ່ານ">
+                            </div>
+                            <div class="mb-4">
+                                <label for="department" class="block text-gray-700 mb-1">ພະແນກ/ກົມກອງ</label>
+                                <input type="text" id="department" name="department" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="ທ່ານສັງກັດຢູ່ພະແນກໃດ?">
+                            </div>
+                            <div class="mb-4">
+                                <label for="issue" class="block text-gray-700 mb-1">ລາຍລະອຽດຂອງບັນຫາ</label>
+                                <textarea id="issue" name="issue" required rows="4" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="ກະລຸນາອະທິບາຍບັນຫາທີ່ທ່ານພົບ"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">ສົ່ງຂໍ້ມູນ</button>
+                        </form>
+                        </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="article-view" class="hidden">
+        </div>
+
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-10">
+            <div class="text-center text-gray-500">
+                <p class="text-sm">&copy; 2025 ພະແນກເຕັກໂນໂລຊີຂໍ້ມູນຂ່າວສານ. ສະຫງວນລິຂະສິດ.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div id="video-modal" class="modal-backdrop fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 hidden opacity-0">
+        <div class="modal-content bg-black rounded-lg shadow-2xl w-full max-w-4xl transform scale-95 relative">
+            <button id="close-video-modal-btn" class="absolute -top-4 -right-4 text-white bg-gray-800 rounded-full w-10 h-10 flex items-center justify-center z-10">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="aspect-w-16 aspect-h-9">
+                <iframe id="youtube-player" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // =================================================================
+            // ===== CMS DATABASE (Content Management System) =====
+            // =================================================================
+            // ໃນອະນາຄົດ, ເມື່ອທ່ານຕ້ອງການເພີ່ມບົດຄວາມ ຫຼື ວິດີໂອໃໝ່
+            // ພຽງແຕ່ກັອບປີ້-ວາງຂໍ້ມູນໃໝ່ຕໍ່ທ້າຍລາຍການຂ້າງລຸ່ມນີ້
+            // ໂດຍໃຫ້ຢູ່ໃນຮູບແບບດຽວກັນ.
+            
+            const cmsData = {
+                articles: [
+                    {
+                        id: 'phishing',
+                        date: '15 ສິງຫາ 2025',
+                        title: '5 ວິທີປ້ອງກັນອີເມວຫຼອກລວງ (Phishing)',
+                        description: 'ຮຽນຮູ້ວິທີສັງເກດ ແລະ ປ້ອງກັນຕົນເອງຈາກອີເມວຫຼອກລວງທີ່ກຳລັງລະບາດ...',
+                        content: `
+                            <p class="mb-4">ອີເມວຫຼອກລວງ ຫຼື Phishing ເປັນໄພຄຸກຄາມທີ່ພົບເຫັນໄດ້ທົ່ວໄປ. ຜູ້ບໍ່ຫວັງດີຈະພະຍາຍາມຫຼອກໃຫ້ທ່ານກົດລິ້ງ ຫຼື ໃຫ້ຂໍ້ມູນສ່ວນຕົວ. ລອງນຳໃຊ້ 5 ວິທີນີ້ເພື່ອປ້ອງກັນຕົນເອງ:</p>
+                            <ol class="list-decimal list-inside space-y-2">
+                                <li><b>ກວດສອບອີເມວຜູ້ສົ່ງ:</b> ເບິ່ງວ່າອີເມວຜູ້ສົ່ງນັ້ນຖືກຕ້ອງ ແລະ ເປັນທີ່ໜ້າເຊື່ອຖືຫຼືບໍ່. ຖ້າເບິ່ງແປກໆ, ຢ່າໄວ້ໃຈ.</li>
+                                <li><b>ຢ່າຄລິກລິ້ງທີ່ໜ້າສົງໄສ:</b> ໃຫ້ນຳເມົ້າໄປວາງເທິງລິ້ງກ່ອນ (ໂດຍບໍ່ຕ້ອງຄລິກ) ເພື່ອເບິ່ງວ່າ URL ປາຍທາງນັ້ນຖືກຕ້ອງຫຼືບໍ່.</li>
+                                <li><b>ສັງເກດການໃຊ້ພາສາ:</b> ອີເມວຫຼອກລວງມັກຈະມີຄຳຜິດ ຫຼື ໃຊ້ພາສາທີ່ຟ້າວຟັ່ງ, ກົດດັນໃຫ້ທ່ານເຮັດບາງຢ່າງທັນທີ.</li>
+                                <li><b>ຢ່າເປີດໄຟລ໌ແນບທີ່ບໍ່ໄດ້ຮ້ອງຂໍ:</b> ໄຟລ໌ແນບອາດມີໄວຣັສແຝງຢູ່.</li>
+                                <li><b>ໃຊ້ການຢືນຢັນຕົວຕົນສອງຂັ້ນຕອນ (2FA):</b> ເປັນການເພີ່ມຊັ້ນຄວາມປອດໄພໃຫ້ບັນຊີຂອງທ່ານ.</li>
+                            </ol>
+                        `
+                    },
+                    {
+                        id: 'teams',
+                        date: '10 ສິງຫາ 2025',
+                        title: 'ຄູ່ມື: ການນຳໃຊ້ Microsoft Teams ໃຫ້ມີປະສິດທິພາບ',
+                        description: 'ຮຽນຮູ້ການໃຊ້ງານເຄື່ອງມືຕ່າງໆໃນ Microsoft Teams ເພື່ອການປະຊຸມ ແລະ ເຮັດວຽກຮ່ວມກັນ...',
+                        content: `
+                            <p class="mb-4">Microsoft Teams ເປັນເຄື່ອງມືທີ່ມີປະສິດທິພາບສຳລັບການເຮັດວຽກຮ່ວມກັນ. ລອງໃຊ້ເຄັດລັບເຫຼົ່ານີ້ເພື່ອເຮັດວຽກໄດ້ດີຂຶ້ນ:</p>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><b>ສ້າງທີມ ແລະ ຊ່ອງທາງ (Channels):</b> ຈັດລະບຽບການສົນທະນາຕາມໂຄງການ ຫຼື ພະແນກງານ.</li>
+                                <li><b>ໃຊ້ @mentions:</b> ເພື່ອເອີ້ນຄວາມສົນໃຈຈາກບຸກຄົນທີ່ຕ້ອງການໃຫ້ເຫັນຂໍ້ຄວາມ.</li>
+                                <li><b>ຈັດການປະຊຸມອອນລາຍ:</b> ໃຊ້ຟັງຊັນການປະຊຸມ, ບັນທຶກການປະຊຸມ, ແລະ ແບ່ງປັນໜ້າຈໍເພື່ອການສື່ສານທີ່ຊັດເຈນ.</li>
+                                <li><b>ແບ່ງປັນ ແລະ ຮ່ວມກັນແກ້ໄຂໄຟລ໌:</b> ສາມາດເຮັດວຽກເທິງເອກະສານ Word, Excel, PowerPoint ຮ່ວມກັນໄດ້ແບບສົດໆ.</li>
+                                <li><b>ເຊື່ອມຕໍ່ກັບແອັບພລິເຄຊັນອື່ນ:</b> ເພີ່ມເຄື່ອງມືອື່ນໆ ເຊັ່ນ Planner, OneNote ເຂົ້າມາໃນທີມຂອງທ່ານເພື່ອການເຮັດວຽກທີ່ຄົບວົງຈອນ.</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        id: 'speedup',
+                        date: '05 ສິງຫາ 2025',
+                        title: 'ເຄັດລັບ: ວິທີເລັ່ງຄວາມໄວຄອມພິວເຕີດ້ວຍຕົນເອງ',
+                        description: 'ຄອມພິວເຕີຊ້າບໍ່ແມ່ນເລື່ອງຕະຫຼົກ! ລອງເຮັດຕາມ 7 ເຄັດລັບງ່າຍໆນີ້...',
+                        content: `
+                            <p class="mb-4">ຄອມພິວເຕີທີ່ຊ້າລົງອາດເກີດຈາກຫຼາຍສາເຫດ. ລອງກວດສອບ ແລະ ແກ້ໄຂດ້ວຍວິທີງ່າຍໆເຫຼົ່ານີ້:</p>
+                            <ol class="list-decimal list-inside space-y-2">
+                                <li><b>ລຶບໂປຣແກຣມທີ່ບໍ່ໄດ້ໃຊ້:</b> ເຂົ້າໄປທີ່ Control Panel > Programs and Features ເພື່ອຖອນການຕິດຕັ້ງໂປຣແກຣມທີ່ບໍ່ຈຳເປັນ.</li>
+                                <li><b>ລຶບໄຟລ໌ຂີ້ເຫຍື້ອ (Temporary Files):</b> ໃຊ້ເຄື່ອງມື Disk Cleanup ເພື່ອລ້າງໄຟລ໌ຂີ້ເຫຍື້ອໃນລະບົບ.</li>
+                                <li><b>ປິດໂປຣແກຣມທີ່ເລີ່ມພ້ອມ Windows:</b> ກົດ Ctrl+Shift+Esc ເພື່ອເປີດ Task Manager, ໄປທີ່ແຖບ Startup ແລະ ປິດໂປຣແກຣມທີ່ບໍ່ຈຳເປັນ.</li>
+                                <li><b>ສະແກນຫາໄວຣັສ:</b> ໃຊ້ໂປຣແກຣມ Antivirus ເພື່ອກວດສອບ ແລະ ກຳຈັດມັນແວ.</li>
+                                <li><b>ອັບເດດ Windows ແລະ Drivers:</b> ການອັບເດດຈະຊ່ວຍແກ້ໄຂຂໍ້ຜິດພາດ ແລະ ເພີ່ມປະສິດທິພາບ.</li>
+                                <li><b>ເພີ່ມ RAM:</b> ຖ້າຄອມຂອງທ່ານເກົ່າແລ້ວ, ການເພີ່ມ RAM ເປັນວິທີທີ່ເຫັນຜົນທີ່ສຸດ.</li>
+                                <li><b>ປ່ຽນໄປໃຊ້ SSD:</b> Solid State Drive (SSD) ເຮັດວຽກໄວກວ່າ Hard Disk Drive (HDD) ແບບດັ້ງເດີມຫຼາຍເທົ່າ.</li>
+                            </ol>
+                        `
+                    }
+                ],
+                videos: [
+                    {
+                        youtubeId: 'Cdf6zJwYpas',
+                        title: 'ການທຳນາຍ AI ປີ 2035 ຈາກນັກຄິດຄົ້ນລະດັບໂລກ'
+                    },
+                    {
+                        youtubeId: 'GSBvRno8ZcA',
+                        title: 'ປີ 2025 ມະນຸດຢູ່ໃສ? ເມື່ອ AI ຄອງໂລກ'
+                    },
+                    {
+                        youtubeId: '0EXpypxTkNI',
+                        title: 'ການກຳນົດການຍໍ້ໜ້າ, ໄລຍະກັ້ນຊ້າຍ ແລະ ໄລຍະກັ້ນຂວາ ໂດຍໃຊ້ Indent ເທິງແຖບໄມ້ບັນທັດ'
+                    }
+                ]
+            };
+
+            // =================================================================
+            // ===== DYNAMIC CONTENT RENDERING =====
+            // =================================================================
+            const articlesContainer = document.getElementById('articles-container');
+            const videosContainer = document.getElementById('videos-container');
+            const articleViewContainer = document.getElementById('article-view');
+
+            // Render Article Cards
+            cmsData.articles.forEach(article => {
+                const cardHtml = `
+                    <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden">
+                        <div class="p-6">
+                            <p class="text-sm text-gray-500 mb-2">${article.date}</p>
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">${article.title}</h3>
+                            <p class="text-gray-600 mb-4 text-sm">${article.description}</p>
+                            <a href="#article-${article.id}" class="open-article-btn text-blue-600 font-semibold hover:underline text-sm">ອ່ານເພີ່ມເຕີມ →</a>
+                        </div>
+                    </div>
+                `;
+                articlesContainer.innerHTML += cardHtml;
+            });
+
+            // Render Video Cards
+            cmsData.videos.forEach(video => {
+                const cardHtml = `
+                    <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden cursor-pointer open-video-btn" data-youtube-id="${video.youtubeId}">
+                        <img src="https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg" alt="ຮູບໜ້າປົກວິດີໂອ" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-gray-800">${video.title}</h3>
+                        </div>
+                    </div>
+                `;
+                videosContainer.innerHTML += cardHtml;
+            });
+            
+            // Render Full Article Pages
+            cmsData.articles.forEach(article => {
+                const articleHtml = `
+                    <section id="article-${article.id}" class="article-content py-20 bg-white">
+                        <div class="container mx-auto px-6 max-w-3xl">
+                            <a href="#knowledge" class="back-to-main-btn text-blue-600 font-semibold hover:underline text-sm mb-8 inline-block">← ກັບຄືນໄປຄັງຄວາມຮູ້</a>
+                            <h2 class="text-4xl font-bold text-gray-800 mb-4">${article.title}</h2>
+                            <p class="text-gray-500 mb-8">${article.date}</p>
+                            <div class="prose max-w-none text-gray-700">${article.content}</div>
+                        </div>
+                    </section>
+                `;
+                articleViewContainer.innerHTML += articleHtml;
+            });
+
+            // =================================================================
+            // ===== EVENT LISTENERS AND PAGE LOGIC =====
+            // =================================================================
+            const mainContent = document.getElementById('main-content');
+            const articleView = document.getElementById('article-view');
+            const allArticleContents = document.querySelectorAll('.article-content');
+            
+            function showMainContent() {
+                mainContent.style.display = 'block';
+                articleView.style.display = 'none';
+            }
+
+            function showArticle(articleId) {
+                mainContent.style.display = 'none';
+                articleView.style.display = 'block';
+                allArticleContents.forEach(content => {
+                    content.style.display = 'none';
+                });
+                const targetArticle = document.getElementById(articleId);
+                if (targetArticle) {
+                    targetArticle.style.display = 'block';
+                }
+                window.scrollTo(0, 0);
+            }
+
+            // Must re-select buttons after they are dynamically created
+            document.querySelectorAll('.open-article-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const articleId = this.getAttribute('href').substring(1);
+                    showArticle(articleId);
+                });
+            });
+
+            document.querySelectorAll('.back-to-main-btn, .main-nav-link').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showMainContent();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        setTimeout(() => {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }, 0);
+                    }
+                });
+            });
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+            const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+            mobileNavLinks.forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); });
+
+            // --- Active Link Highlighting on Scroll ---
+            const sections = document.querySelectorAll('#main-content > section');
+            const navLinks = document.querySelectorAll('#desktop-nav a.nav-link');
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+            sections.forEach(section => { observer.observe(section); });
+
+            // --- Video Modal Logic ---
+            const videoModal = document.getElementById('video-modal');
+            const videoModalBackdrop = videoModal;
+            const videoModalContent = videoModal.querySelector('.modal-content');
+            const closeVideoModalBtn = document.getElementById('close-video-modal-btn');
+            const youtubePlayer = document.getElementById('youtube-player');
+
+            function openVideoModal(youtubeId) {
+                youtubePlayer.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
+                videoModal.classList.remove('hidden');
+                setTimeout(() => {
+                    videoModalBackdrop.classList.remove('opacity-0');
+                    videoModalContent.classList.remove('scale-95');
+                }, 10);
+            }
+
+            function closeVideoModal() {
+                youtubePlayer.src = ''; // Stop the video
+                videoModalBackdrop.classList.add('opacity-0');
+                videoModalContent.classList.add('scale-95');
+                setTimeout(() => {
+                    videoModal.classList.add('hidden');
+                }, 300);
+            }
+
+            // Must re-select buttons after they are dynamically created
+            document.querySelectorAll('.open-video-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const youtubeId = btn.dataset.youtubeId;
+                    openVideoModal(youtubeId);
+                });
+            });
+
+            closeVideoModalBtn.addEventListener('click', closeVideoModal);
+            videoModalBackdrop.addEventListener('click', (e) => {
+                // If clicked directly on the backdrop (not the content), close modal
+                if (e.target === videoModalBackdrop) {
+                    closeVideoModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

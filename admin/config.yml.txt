@@ -1,0 +1,27 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "articles"
+    label: "ບົດຄວາມແນະນຳ"
+    folder: "_data/articles"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "ຫົວຂໍ້", name: "title", widget: "string" }
+      - { label: "ວັນທີ", name: "date", widget: "string" }
+      - { label: "ຄຳອະທິບາຍສັ້ນໆ", name: "description", widget: "string" }
+      - { label: "ເນື້ອຫາເຕັມ", name: "content", widget: "markdown" }
+
+  - name: "videos"
+    label: "ວິດີໂອສອນ"
+    folder: "_data/videos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "ຫົວຂໍ້ວິດີໂອ", name: "title", widget: "string" }
+      - { label: "YouTube Video ID", name: "youtubeId", widget: "string" }
